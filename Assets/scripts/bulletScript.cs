@@ -19,36 +19,42 @@ public class bulletScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    private void FixedUpdate() {
+    private void FixedUpdate()
+    {
         Rigidbody2D.velocity = Direction * Speed;
     }
 
-    public void SetDirection(Vector2 direction){
+    public void SetDirection(Vector2 direction)
+    {
         Direction = direction;
     }
 
-    public void DestroyBullet(){
+    public void DestroyBullet()
+    {
         Destroy(gameObject);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) {
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
         JhonMovement jhonMovement = collision.GetComponent<JhonMovement>();
         GruntScript gruntScript = collision.GetComponent<GruntScript>();
 
-        if (jhonMovement != null){
+        if (jhonMovement != null)
+        {
             jhonMovement.Hit();
         }
-        if (gruntScript != null){
+        if (gruntScript != null)
+        {
             gruntScript.Hit();
         }
         DestroyBullet();
     }
 
     // private void OnCollisionEnter2D(Collision2D collision) {
-        
+
     // }
 
 }
